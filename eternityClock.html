@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Timpul nostru — Relatie Timer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+  :root {
+  --bg1: #1e3c72;   /* albastru închis */
+  --bg2: #2a8f8f;   /* verde-albastru */
+--card: rgba(255,255,255,0.08);
+--accent: #ffd6e0;
+--glass: rgba(255,255,255,0.06);
+--blur: 10px;
+
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    body{
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(255,214,230,0.08), transparent),
+                  linear-gradient(135deg,var(--bg1),var(--bg2));
+      color: #fff; display:flex;justify-content:center;align-items:center;padding:24px;
+    }
+
+    .card{width:100%;max-width:520px;border-radius:18px;padding:22px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));box-shadow:0 10px 30px rgba(0,0,0,0.35);backdrop-filter: blur(var(--blur));}
+
+    h1{font-family:'Playfair Display',serif;margin:0;font-size:22px;letter-spacing:0.2px;text-align:center}
+    p.lead{margin:6px 0 0;opacity:0.9;font-size:13px;text-align:center}
+
+    .timer{margin-top:18px;background:var(--card);padding:18px;border-radius:14px;text-align:center}
+    .time-row{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .time-box{flex:1 1 48%;min-width:110px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:12px;border-radius:10px}
+    .num{font-size:22px;font-weight:700}
+    .label{font-size:12px;opacity:0.85;margin-top:6px}
+
+    .quote{margin-top:16px;font-style:italic;font-size:14px;opacity:0.95;line-height:1.4}
+
+    .buttons{display:flex;gap:10px;margin-top:14px}
+    button{flex:1;padding:10px;border-radius:10px;border:0;background:rgba(255,255,255,0.06);color:inherit;font-weight:600}
+
+    /* responsive */
+    @media (max-width:420px){.time-row{gap:8px}.time-box{flex-basis:100%}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Timpul nostru împreună</h1>
+    <p class="lead">All in, always and forever.</p>
+
+    <div class="timer" aria-live="polite">
+      <div class="time-row">
+        <div class="time-box"><div class="num" id="days">0</div><div class="label">Zile</div></div>
+        <div class="time-box"><div class="num" id="hours">0</div><div class="label">Ore</div></div>
+        <div class="time-box"><div class="num" id="minutes">0</div><div class="label">Minute</div></div>
+        <div class="time-box"><div class="num" id="seconds">0</div><div class="label">Secunde</div></div>
+      </div>
+
+      <div class="quote" id="quote">De când două suflete s-au recunoscut,<br>și timpul a început să curgă altfel — o eternitate de iubire!</div>
+
+      <div class="buttons">
+        <button id="btnToggleBg">Schimbă fundal</button>
+        <button id="btnToggleQuote">Schimbă text</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const start = new Date('2025-04-07T03:27:00');
+
+    function update() {
+      const now = new Date();
+      let diff = Math.max(0, now - start);
+
+      const days = Math.floor(diff / (1000*60*60*24));
+      diff -= days * (1000*60*60*24);
+      const hours = Math.floor(diff / (1000*60*60));
+      diff -= hours * (1000*60*60);
+      const minutes = Math.floor(diff / (1000*60));
+      diff -= minutes * (1000*60);
+      const seconds = Math.floor(diff / 1000);
+
+      document.getElementById('days').textContent = days.toLocaleString();
+      document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
+    }
+
+    update();
+    setInterval(update, 1000);
+
+    // Schimbă fundal
+const palettes = [
+  ['#1e3c72','#2a8f8f'],  // albastru-verde
+  ['#ff9a9e','#fecfef'],
+  ['#0f2027','#203a43']
+];
+
+    let paletteIndex = 0;
+    document.getElementById('btnToggleBg').addEventListener('click', ()=>{
+      paletteIndex = (paletteIndex+1) % palettes.length;
+      document.documentElement.style.setProperty('--bg1', palettes[paletteIndex][0]);
+      document.documentElement.style.setProperty('--bg2', palettes[paletteIndex][1]);
+    });
+
+    // Schimbă text (2 variante)
+    const quotes = [
+   "De când două suflete s-au recunoscut,<br>și timpul a început să curgă altfel — o eternitate de iubire!",
+  "Two hearts, one soul. Me and you, babe.",
+  "Fiecare zi cu tine e ca o poveste de iubire scrisă doar pentru noi."
+    ];
+    let quoteIndex = 0;
+    document.getElementById('btnToggleQuote').addEventListener('click', ()=>{
+      quoteIndex = (quoteIndex + 1) % quotes.length;
+      document.getElementById('quote').innerHTML = quotes[quoteIndex];
+    });
+  </script>
+</body>
+</html>
