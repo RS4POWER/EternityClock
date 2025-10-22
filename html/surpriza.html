@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Surprise! 🎁</title>
+  <style>
+    body {
+      background-color: #fff7fa;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 60px;
+    }
+    h1 {
+      color: #ff4f81;
+      font-size: 36px;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease-out;
+    }
+    #surpriseBox {
+      display: none;
+      margin-top: 30px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    #surpriseBox img {
+      max-width: 300px;
+      border-radius: 15px;
+      border: 5px solid #ffb6c1;
+      box-shadow: 0 0 20px #ffb6c1aa;
+      margin-bottom: 20px;
+    }
+    #surpriseBox p {
+      font-size: 22px;
+      color: #333;
+      padding: 10px 20px;
+      background-color: #ffe0ec;
+      border-radius: 15px;
+      display: inline-block;
+    }
+    button {
+      background-color: #ff85a2;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #ff4f81;
+      transform: scale(1.05);
+    }
+
+    #counter {
+      margin-top: 40px;
+      font-size: 20px;
+      color: #555;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>I have a surprise for you... 🎁</h1>
+  <button onclick="showSurprise()">Click me 💌</button>
+
+  <div id="surpriseBox">
+    <img src="../gifs/love-you.gif" alt="Surprise GIF">
+    <p>You're the most beautiful part of my life. I love you forever. 💖</p>
+    
+    <div id="counter"></div>
+  </div>
+
+  <script>
+    function showSurprise() {
+      document.getElementById("surpriseBox").style.display = "block";
+      startCounter();
+    }
+
+    function startCounter() {
+      const startTime = new Date("2025-04-07T03:27:00");
+
+      function updateCounter() {
+        const now = new Date();
+        const diff = now - startTime;
+
+        const seconds = Math.floor(diff / 1000) % 60;
+        const minutes = Math.floor(diff / 1000 / 60) % 60;
+        const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+        const days = Math.floor(diff / 1000 / 60 / 60 / 24);
+
+        document.getElementById("counter").innerText =
+          `💗 We've been together for ${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds. 💗`;
+      }
+
+      updateCounter(); // imediat
+      setInterval(updateCounter, 1000); // apoi la fiecare secundă
+    }
+  </script>
+
+</body>
+</html>

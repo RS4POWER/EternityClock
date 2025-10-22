@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Pentru Iubita Mea 💖</title>
+    <style>
+        body {
+            background-color: #fff5f8;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #ff4f81;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        .box {
+            background-color: #ffb6c1;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px #ffc0cb88;
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .box:hover {
+            transform: scale(1.05);
+            background-color: #ff85a2;
+        }
+        /* Stilizare pentru butonul de back */
+    .back-button {
+    position: fixed;
+    top: 50%;
+    left: 0; /* Se va vedea direct pe ecran */
+    width: 70px;
+    height: 70px;
+    background: #ff4f81;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, left 0.3s ease;
+    z-index: 1000; /* Asigură-te că butonul este deasupra altor elemente */
+}
+
+      .back-button {
+    position: fixed;
+    top: 50%;
+    right: 20px; /* Butonul pe dreapta */
+    width: 50px;  /* Dimensiune mai mică */
+    height: 50px; /* Dimensiune mai mică */
+    background: rgba(255, 79, 129, 0.8); /* Culoare mai subtilă, transparentă */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.back-button::before {
+    content: "<";
+    font-size: 28px; /* Dimensiune mai mică */
+    color: #f7f8fa; /* Culoare mai subtilă, aproape albă */
+    opacity: 0;  /* Ascuns inițial */
+    transition: opacity 0.3s ease;
+    position: relative;  /* Adăugăm position: relative pentru a putea muta săgeata */
+    top: -2px; /* Ridicăm puțin săgeata față de centrul butonului */
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+}
+
+.back-button:hover::before {
+    opacity: 1;  /* Face săgeata vizibilă la hover */
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>For my baby panda 💖</h1>
+    <div class="container">
+        <a class="box" href="html/mesaje.html">💌 Mesaje Drăgălașe</a>
+        <a class="box" href="html/gifuri.html">🐻 Galerie de GIF-uri</a>
+        <a class="box" href="html/surpriza.html">🎁 Surpriză!</a>
+    </div>
+
+    <!-- Butonul de back -->
+    <div class="back-button" onclick="window.location.href='index.html';"></div>
+</body>
+</html>

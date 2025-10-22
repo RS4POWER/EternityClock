@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Messages 💌</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #d63384;
+      margin-bottom: 30px;
+    }
+
+    #messageDisplay {
+      background-color: #ffe6f0;
+      border: 2px solid #ff99cc;
+      border-radius: 15px;
+      padding: 30px;
+      font-size: 1.5em;
+      margin-bottom: 40px;
+      color: #b30059;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: all 0.3s ease;
+      min-height: 100px;
+    }
+
+    .message-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    button {
+      background-color: #ff4d88;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #e6005c;
+      transform: scale(1.05);
+    }
+
+    .random-button {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>💌 Sweet Love Messages</h1>
+
+  <div id="messageDisplay">Click a box below to read a message ❤️</div>
+
+  <div class="message-buttons">
+    <button onclick="showMessage(0)">daily smile</button>
+    <button onclick="showMessage(1)">every moment</button>
+    <button onclick="showMessage(2)">speechless love</button>
+    <button onclick="showMessage(3)">miss even now</button>
+    <button onclick="showMessage(4)">always you</button>
+    <button onclick="showMessage(5)">otter half</button>
+    <button onclick="showMessage(6)">baby panda</button>
+    <button onclick="showMessage(7)">stronger together</button>
+  </div>
+
+  <div class="random-button">
+    <button onclick="showRandomMessage()">💫 random message</button>
+  </div>
+
+  <script>
+    const messages = [
+      "You’re the reason I smile every day. 🩷",
+      "Every moment with you is a gift. 🎁",
+      "I love you more than words can say. 💖",
+      "I miss you even when you're right next to me. 😘",
+      "If I had to choose again, I’d still choose you. 🌟",
+      "U my otter half. 🫶",
+      "U are my baby panda! I love you!",
+      "Even when we argue, even when we’re upset, I still love you. I don’t want to give up on us – I want us to grow stronger through every storm. 💞"
+    ];
+
+    function showMessage(index) {
+      document.getElementById("messageDisplay").textContent = messages[index];
+    }
+
+    function showRandomMessage() {
+      const index = Math.floor(Math.random() * messages.length);
+      showMessage(index);
+    }
+  </script>
+</body>
+</html>

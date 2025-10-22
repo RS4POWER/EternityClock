@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GIF Viewer</title>
+<style>
+  body {
+    background-color: #ffe6f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    color: #cc0044;
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+
+  #gif-container {
+    width: 350px;
+    height: 350px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(204, 0, 68, 0.3);
+    margin-bottom: 30px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff0f6;
+  }
+
+  #gif-container img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 15px;
+    object-fit: contain;
+  }
+
+  #buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 700px;
+  }
+
+  button {
+    background-color: #cc0044;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(204, 0, 68, 0.4);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+
+  button:hover {
+    background-color: #ff3366;
+    transform: scale(1.08);
+  }
+
+  button:focus {
+    outline: 2px solid #ff6699;
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Choose a GIF to display</h1>
+
+<div id="gif-container">
+  <img id="main-gif" src="../gifs/bear.gif" alt="Displayed GIF" />
+</div>
+
+<div id="buttons-container">
+  <!-- Buttons inserted by JS -->
+</div>
+
+<script>
+  const gifs = [
+    "bear.gif",
+    "bear-cuddle-bear-hug.gif",
+    "bears-with-kisses-bg.gif",
+    "bubu-and-dudu.gif",
+    "bubu-and-dudu-cute.gif",
+    "bubu-dudu-biben-dudu.gif",
+    "bubu-dudu-kisses.gif",
+    "couple-petting.gif",
+    "dudu-hug-bubu-dudu-kiss.gif",
+    "dudu-kissing-bubu-hearts.gif",
+    "i-love-you-otter.gif",
+    "i-love-you-so-much-ily.gif",
+    "jiorjinajiorjino.gif",
+    "lets-go.gif",
+    "love-mochi-love.gif",
+    "love-you.gif",
+    "love-you-babe-kiss.gif",
+    "milk-and-mocha-relax.gif",
+    "milk-and-mocha-waching.gif",
+    "miss-miss-u.gif",
+    "mochi-cuddle-peach.gif",
+    "otter-animated-otter.gif",
+    "otter-cute.gif",
+    "otterholdinghands.gif",
+    "otter-kiss.gif",
+    "otter-love.gif",
+    "otter-otters.gif",
+    "ottie-and-otter.gif",
+    "peach-and-goma.gif",
+    "peach-goma.gif",
+    "rpinki.gif",
+    "stoneruhi-vivanking.gif",
+    "tom-and-jerry.gif",
+    "tom-tom-and-jerry.gif"
+  ];
+
+  const buttonsContainer = document.getElementById("buttons-container");
+  const mainGif = document.getElementById("main-gif");
+
+  gifs.forEach(gifName => {
+    const btn = document.createElement("button");
+    btn.textContent = gifName.replace(/-/g, " ").replace(".gif", "");
+    btn.title = gifName;
+    btn.addEventListener("click", () => {
+      mainGif.src = `../gifs/${gifName}`;
+      mainGif.alt = btn.textContent;
+    });
+    buttonsContainer.appendChild(btn);
+  });
+</script>
+
+</body>
+</html>
