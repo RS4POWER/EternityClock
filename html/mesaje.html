@@ -22,15 +22,18 @@
       background-color: #ffe6f0;
       border: 2px solid #ff99cc;
       border-radius: 15px;
-      padding: 30px;
-      font-size: 1.5em;
+      padding: 20px;
+      font-size: 1.3em;
       margin-bottom: 40px;
       color: #b30059;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      min-height: 120px;
+      max-height: 400px;
+      overflow-y: auto;
+      white-space: pre-line;
       transition: all 0.3s ease;
-      min-height: 100px;
     }
 
     .message-buttons {
@@ -38,6 +41,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
+      margin-bottom: 20px;
     }
 
     button {
@@ -45,7 +49,7 @@
       color: white;
       border: none;
       border-radius: 12px;
-      padding: 12px 20px;
+      padding: 12px 18px;
       font-size: 1em;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
@@ -56,17 +60,34 @@
       transform: scale(1.05);
     }
 
-    .random-button {
-      margin-top: 50px;
+    .moon-button {
+      background: linear-gradient(90deg, #ffb3d9, #ffe6f0);
+      color: #b30059;
+      box-shadow: 0 0 10px #ffb3d9;
+      animation: glow 2s infinite ease-in-out;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .moon-button:hover {
+      transform: translateY(4px) scale(1.05);
+      box-shadow: 0 0 25px #ff66b2;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 8px #ff99cc; }
+      50% { box-shadow: 0 0 20px #ff66b2; }
+      100% { box-shadow: 0 0 8px #ff99cc; }
     }
   </style>
 </head>
 <body>
   <h1>💌 Sweet Love Messages</h1>
 
-  <div id="messageDisplay">Click a box below to read a message ❤️</div>
+  <div id="messageDisplay">Click a button below to read a message ❤️</div>
 
   <div class="message-buttons">
+    <!-- Mesaje originale -->
     <button onclick="showMessage(0)">daily smile</button>
     <button onclick="showMessage(1)">every moment</button>
     <button onclick="showMessage(2)">speechless love</button>
@@ -77,12 +98,57 @@
     <button onclick="showMessage(7)">stronger together</button>
   </div>
 
-  <div class="random-button">
-    <button onclick="showRandomMessage()">💫 random message</button>
+  <div class="message-buttons">
+    <!-- Mesaje noi -->
+    <button onclick="showMessage(8)">Bubuu & Panduța</button>
+    <button onclick="showMessage(9)">Ferma noastră</button>
+    <button onclick="showMessage(10)">Îmi e dor</button>
+    <button onclick="showMessage(11)">Cu tine vreau tot</button>
+    <button onclick="showMessage(12)">Camera goală</button>
+    <button onclick="showMessage(13)">Aș da orice</button>
+    <button onclick="showMessage(14)">Când mă apucă dorul</button>
+    <button onclick="showMessage(15)">Suflet incomplet</button>
+    <button onclick="showMessage(16)">Abia aștept</button>
   </div>
+
+  <div class="message-buttons">
+    <!-- Mesaje cu luna -->
+    <button onclick="showMessage(17)">Luna ne unește</button>
+    <button onclick="showMessage(18)">Sub aceeași lună</button>
+    <button onclick="showMessage(19)">Luna păstrează parfumul tău</button>
+    <button onclick="showMessage(20)">Dacă mă uiți</button>
+    <button onclick="showMessage(21)">Privește luna</button>
+  </div>
+
+  <div class="message-buttons">
+    <!-- Buton special semiluna -->
+    <button class="moon-button" onclick="showMessage(22)">🌙 Pandantiv special</button>
+  </div>
+
+  <div class="message-buttons">
+    <!-- Mesaje spicy -->
+    <button onclick="showMessage(23)">Primul sărut</button>
+    <button onclick="showMessage(24)">Sub pătură</button>
+    <button onclick="showMessage(25)">Mă pierd în tine</button>
+    <button onclick="showMessage(26)">Fiecare sărut</button>
+    <button onclick="showMessage(27)">Te iubesc din suflet</button>
+    <button onclick="showMessage(28)">Ești curajul meu</button>
+    <button onclick="showMessage(29)">Te iubesc — atât ajunge</button>
+    <button onclick="showMessage(30)">Oceanul iubirii</button>
+    <button onclick="showMessage(31)">Acasă e cu tine</button>
+  </div>
+
+<!-- Secțiunea nouă pentru butoanele romantice -->
+<div class="message-buttons">
+  <button style="background-color:#ff1a1a;" onclick="showMessage(32)">Spicy</button>
+  <button style="background-color:#ff1a1a;" onclick="showMessage(33)">Spicy</button>
+  <button style="background-color:#ff1a1a;" onclick="showMessage(34)">Spicy</button>
+  <button style="background-color:#ff1a1a;" onclick="showMessage(35)">Spicy</button>
+</div>
 
   <script>
     const messages = [
+      // Originale
       "You’re the reason I smile every day. 🩷",
       "Every moment with you is a gift. 🎁",
       "I love you more than words can say. 💖",
@@ -90,16 +156,66 @@
       "If I had to choose again, I’d still choose you. 🌟",
       "U my otter half. 🫶",
       "U are my baby panda! I love you!",
-      "Even when we argue, even when we’re upset, I still love you. I don’t want to give up on us – I want us to grow stronger through every storm. 💞"
+      "Even when we argue, even when we’re upset, I still love you. I don’t want to give up on us – I want us to grow stronger through every storm. 💞",
+
+      // Noi
+      "Bubuu, eu și cu Panduța noastră te așteptăm să vii, să ne dragalim și să o întoarcem invers să nu ne vadă când ne iubim tare tare și mult! 😍 U my entire world, babe! 💞",
+      "Iubiree, imaginează-ți că deja avem primul animăluț pentru ferma noastră. Panduța abia așteaptă frățiori 😍🥰",
+      "Îmi e atât de dor de tine, încât îți simt parfumul.",
+      "Cu tine vreau tot — azi, mâine și pentru totdeauna.",
+      "Casa e goală fără tine; fiecare obiect îmi amintește de noi impreuna",
+      "Aș da orice să-ți aud respirația acum, să știu că ești aproape.",
+      "Când mă apucă dorul, închid ochii și te găsesc acolo — în brațele mele.",
+      "Sufletul meu e incomplet până nu te simt lângă mine.",
+      "Abia aștept să te țin aproape, să-ți simt pielea lângă pielea mea și să nu mai pleci.",
+
+      // Luna
+      "Când ne e dor, ne uităm la lună — ea păstrează amintirile noastre și ne ține de mână din depărtare. 🌙",
+      "Sub aceeași lună suntem, chiar dacă-s kilometri între noi. Ea ne știe taina — suntem împreună acolo.",
+      "Luna ne veghează somnul și păstrează parfumul tău în lumina ei. Seara mea e doar a ta.",
+      "Dacă-ti lipsesc, priveste lună — o să-ți trimit un sărut prin razele ei.",
+      "Când îmi e dor îți spun «privește luna»; e felul meu de a-ți spune «sunt aici».",
+
+      // Pandantiv special
+      `Babe, când ți-e dor de mine, când ești tristă sau fericită sau simți nevoia să mă simți aproape,
+nu uita că porți la gât un pandantiv special.
+Semiluna aceasta e martorul nostru tăcut, puntea dintre inimile noastre când distanța apasă.
+
+Ne leagă. Ne păzește. Ne unește.
+
+Când o vei vedea, să-ți amintești că iubirea mea e acolo, chiar și în tăcere.
+E promisiunea mea că nu ești și nu vei fi niciodată singură.
+
+Always be happy, ’cause I love your smile.
+Te iubesc. All in. Always and forever.
+Dacă nu sunt lângă tine acum, înseamnă că voi fi repede-repede!
+Te iubesc și te voi iubi mereu! ❤️🌙`,
+
+      // Spicy
+      "Îmi amintesc când te-am sărutat prima dată — inima mea a început să ardă și n-a mai încetat.",
+      "Noi doi, sub pătură, lumină stinsă — te vreau aproape, acum.",
+      "Mă pierd în tine: atingerea ta îmi spune povești pe care doar trupurile noastre le știu.",
+      "Fiecare sărut cu tine e ca o scânteie care aprinde tot ce sunt.",
+      "Te iubesc din suflet — nu doar pentru ce ești, ci pentru ce sunt când sunt cu tine.",
+      "Ești refugiu, ești curajul meu și cea mai frumoasă parte din mine.",
+      "Când îmi spui «te iubesc», lumea îmi pare de-ajuns.",
+      "Iubirea mea pentru tine nu e o furtună: e oceanul care rămâne mereu acolo.",
+      "Cu tine am învățat ce înseamnă «acasă».",
+"Iți amintești când am stat peste program? Te ai aplecat peste birou, ti am ridicat rochia, si am curs din tine câteva ore ❤️🤗. Love it! " ,
+"Știi, balconul meu tânjește după de când ne-a văzut iubindu-ne si gemând sub razele lunii…" ,
+ "Babe, fotoliul meu plânge după prezenta ta, camera e sumbra si sufletul meu incomplet fără tine." , 
+ "Bubu mea, abia aștept sa ne punem in patul nostru, sa ardem împreuna, sa ne simțim căldura unul altuia, atingerea si sărutul, iar apoi sa adormi pe brațul meu." 
+
+
     ];
 
     function showMessage(index) {
-      document.getElementById("messageDisplay").textContent = messages[index];
-    }
-
-    function showRandomMessage() {
-      const index = Math.floor(Math.random() * messages.length);
-      showMessage(index);
+      const display = document.getElementById("messageDisplay");
+      display.style.opacity = 0;
+      setTimeout(() => {
+        display.textContent = messages[index];
+        display.style.opacity = 1;
+      }, 200);
     }
   </script>
 </body>
