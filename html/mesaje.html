@@ -235,21 +235,19 @@ Te iubesc și te voi iubi mereu! ❤️🌙`,
 "Iți amintești când am stat peste program? Te ai aplecat peste birou, ti am ridicat rochia, si am curs din tine câteva ore ❤️🤗. Love it! " ,
 "Știi, balconul meu tânjește după de când ne-a văzut iubindu-ne si gemând sub razele lunii…" ,
  "Babe, fotoliul meu plânge după prezenta ta, camera e sumbra si sufletul meu incomplet fără tine." , 
- "Bubu mea, abia aștept sa ne punem in patul nostru, sa ardem împreuna, sa ne simțim căldura unul altuia, atingerea si sărutul, iar apoi sa adormi pe brațul meu." 
+ "Bubu mea, abia aștept sa ne punem in patul nostru, sa ardem împreuna, sa ne simțim căldura unul altuia, atingerea si sărutul, iar apoi sa adormi pe brațul meu." ,
 // 💖 Love
 "Te iubesc într-un fel care nu are nevoie de dovezi, dar totuși îți caut chipul în fiecare gest mic pe care-l fac.",
 "Nu trebuie să spui nimic — uneori doar prezența ta liniștește tot haosul din mine.",
 "Când te țin în brațe, simt că tot ce a fost greu în viață are un rost. Pentru că duce aici — la tine.",
 "Tu nu ești doar iubita mea. Ești locul unde pot fi eu fără armură.",
 "Mă înveți zilnic că dragostea nu e doar pasiune — e răbdare, ascultare și curajul de a rămâne chiar și când doare.",
-
 // 💫 Missing You
 "E ciudat cum lipsa ta ma apasa, cum simt fizic golul unde ar trebui să fii tu.",
 "Mi-e dor de tine si în feluri mici — în tăceri, în cafeaua rece, în momentele în care aproape îți aud vocea.",
 "Imi e mai mult decat dor, e o sete de tine. De privirea ta, de atingerea ta, de iubirea ta, de prezenta ta, de NOI",
 "Mi-e dor... dor de mine si tine...",
 "Uneori, dorul ăsta parcă respiră în locul meu. Îl simt în fiecare clipă în care nu te am.",
-
 // 🌙 Our Future
 "Nu vreau perfecțiune, vreau doar un „noi” care nu renunță in fata oricarei furtuni.",
 "Mă văd cu tine peste ani, certându-ne cine spală vasele și râzând fix după.",
@@ -262,16 +260,16 @@ Te iubesc și te voi iubi mereu! ❤️🌙`,
     ];
 
     function showMessage(index) {
-      const display = document.getElementById("messageDisplay");
-      display.style.opacity = 0;
-      setTimeout(() => {
-        display.textContent = messages[index];
-        display.style.opacity = 1;
-      }, 200);
-    }
+  const display = document.getElementById("messageDisplay");
+  display.style.opacity = 0; // fade out
+  setTimeout(() => {
+    display.innerHTML = messages[index]; // folosește innerHTML în loc de textContent
+    display.style.opacity = 1; // fade in
+  }, 200);
+}
+
   </script>
 </body>
 </html>
-
 
 
