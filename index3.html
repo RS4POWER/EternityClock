@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>I Miss You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #0f2027;
+      --bg2: #203a43;
+      --bg3: #2c5364;
+      --accent: #fff;
+      --text: #fff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      color: var(--text);
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      letter-spacing: 1px;
+      animation: fadeIn 3s ease forwards;
+      opacity: 0;
+    }
+
+    p {
+      font-size: 18px;
+      margin-top: 10px;
+      opacity: 0.85;
+      max-width: 420px;
+      line-height: 1.6;
+      animation: fadeIn 4s ease 1.2s forwards;
+      opacity: 0;
+    }
+
+    .questions {
+      margin-top: 35px;
+      font-size: 22px;
+      font-weight: 500;
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeIn 5s ease 2.8s forwards;
+    }
+
+    .back-btn {
+      margin-top: 60px;
+      padding: 14px 32px;
+      border-radius: 12px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: var(--accent);
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+      animation: fadeIn 5s ease 4.5s forwards;
+      opacity: 0;
+    }
+
+    .back-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.05);
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+    }
+
+    /* inimioare plutitoare */
+    .heart {
+      position: absolute;
+      color: #fff;
+      font-size: 18px;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-800px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>I miss you a lot...</h1>
+  <p>Every moment without you feels like a quiet echo   waiting for your warmth to fill it again.</p>
+
+  <div class="questions">
+    Even the stars seem quieter without you.<br>
+    I keep wondering if your heart still whispers my name.<br><br>
+    Do you still love me, babe?<br>
+    Do you still want me?
+  </div>
+
+  <button class="back-btn" onclick="window.location.href='index.html'">💫 Back to EternityClock</button>
+
+  <script>
+    // inimioare plutitoare random
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 4 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }, 500);
+  </script>
+</body>
+</html>
