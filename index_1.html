@@ -11,12 +11,11 @@
     --bg2: #2a8f8f;
     --card: rgba(255,255,255,0.08);
     --accent: #ffd6e0;
-    --glass: rgba(255,255,255,0.06);
     --blur: 10px;
   }
 
   * { box-sizing: border-box; }
-  html, body { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; }
+  html, body { height: 100%; margin: 0; font-family: Inter, system-ui, sans-serif; }
 
   body {
     background: radial-gradient(1200px 600px at 10% 20%, rgba(255,214,230,0.08), transparent),
@@ -26,6 +25,7 @@
     justify-content: center;
     align-items: center;
     padding: 24px;
+    overflow: hidden;
   }
 
   .card {
@@ -36,28 +36,29 @@
     background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
     box-shadow: 0 10px 30px rgba(0,0,0,0.35);
     backdrop-filter: blur(var(--blur));
-    position: relative;
+    transition: transform 0.3s ease;
   }
 
   h1 {
     font-family: 'Playfair Display', serif;
     margin: 0;
-    font-size: 22px;
-    letter-spacing: 0.2px;
+    font-size: 24px;
+    letter-spacing: 0.5px;
     text-align: center;
-  }
+    color: #fff;   }
 
   p.lead {
-    margin: 6px 0 0;
-    opacity: 0.9;
-    font-size: 13px;
+    margin: 8px 0 0;
+    opacity: 0.8;
+    font-size: 14px;
     text-align: center;
+    font-style: italic;
   }
 
   .timer {
-    margin-top: 18px;
+    margin-top: 25px;
     background: var(--card);
-    padding: 18px;
+    padding: 20px;
     border-radius: 14px;
     text-align: center;
   }
@@ -70,57 +71,55 @@
   }
 
   .time-box {
-    flex: 1 1 48%;
-    min-width: 110px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
-    padding: 12px;
+    flex: 1 1 22%;
+    min-width: 70px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.02));
+    padding: 10px 5px;
     border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.05);
   }
 
-  .num {
-    font-size: 22px;
-    font-weight: 700;
-  }
+  .num { font-size: 24px; font-weight: 700; color: #fff; }
+  .label { font-size: 11px; opacity: 0.7; margin-top: 4px; text-transform: uppercase; }
 
-  .label {
-    font-size: 12px;
-    opacity: 0.85;
-    margin-top: 6px;
+  .quote-container {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
   }
 
   .quote {
-    margin-top: 16px;
     font-style: italic;
-    font-size: 14px;
-    opacity: 0.95;
-    line-height: 1.4;
+    font-size: 15px;
+    opacity: 1;
+    line-height: 1.5;
+    transition: opacity 0.5s ease-in-out;
   }
 
-  .buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 14px;
-  }
+  .buttons { display: flex; justify-content: center; margin-top: 15px; }
 
   button {
-    flex: 1;
-    padding: 10px;
-    border-radius: 10px;
-    border: 0;
-    background: rgba(255,255,255,0.06);
-    color: inherit;
+    padding: 12px 24px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
     font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
   }
+  button:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
 
-  /* Butonul de redirecționare spre index2.html */
-  .next-button {
+  /* --- STIL NOU PENTRU BUTOANE DE NAVIGARE --- */
+  .nav-btn {
     position: fixed;
     top: 50%;
-    right: 20px;
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.1); 
+    background: rgba(255, 255, 255, 0.15); 
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -128,26 +127,39 @@
     cursor: pointer;
     transition: transform 0.3s ease, background 0.3s ease;
     z-index: 1000;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255,255,255,0.3);
   }
 
-  .next-button:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.2); 
+  .nav-btn:hover { transform: scale(1.15); background: rgba(255, 255, 255, 0.3); }
+
+  /* Poziționare Dreapta (NEXT) */
+  .nav-next { right: 20px; }
+
+  /* Poziționare Stânga (PREV) - NOU */
+  .nav-prev { left: 20px; }
+
+  /* Inimioare plutitoare */
+  .heart-float {
+      position: absolute;
+      color: #ff4f81;
+      font-size: 20px;
+      animation: floatUp 1.5s ease-out forwards;
+      pointer-events: none;
+  }
+  @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
   }
 
-  
-  /* responsive */
-  @media (max-width: 420px) {
-    .time-row {
-      gap: 8px;
-    }
-
-    .time-box {
-      flex-basis: 100%;
-    }
+  @media (max-width: 480px) {
+    .num { font-size: 20px; }
+    h1 { font-size: 20px; }
+    .card { padding: 15px; }
   }
-
   </style>
 </head>
 <body>
@@ -157,82 +169,77 @@
 
     <div class="timer" aria-live="polite">
       <div class="time-row">
-        <div class="time-box">
-          <div class="num" id="days">0</div>
-          <div class="label">Zile</div>
-        </div>
-        <div class="time-box">
-          <div class="num" id="hours">0</div>
-          <div class="label">Ore</div>
-        </div>
-        <div class="time-box">
-          <div class="num" id="minutes">0</div>
-          <div class="label">Minute</div>
-        </div>
-        <div class="time-box">
-          <div class="num" id="seconds">0</div>
-          <div class="label">Secunde</div>
-        </div>
+        <div class="time-box"><div class="num" id="days">0</div><div class="label">Zile</div></div>
+        <div class="time-box"><div class="num" id="hours">0</div><div class="label">Ore</div></div>
+        <div class="time-box"><div class="num" id="minutes">0</div><div class="label">Minute</div></div>
+        <div class="time-box"><div class="num" id="seconds">0</div><div class="label">Secunde</div></div>
       </div>
 
-      <div class="quote" id="quote">De când două suflete s-au recunoscut,<br>și timpul a început să curgă altfel — o eternitate de iubire!</div>
+      <div class="quote-container">
+        <div class="quote" id="quote">De când două suflete s-au recunoscut,<br>timpul curge altfel — o eternitate de iubire!</div>
+      </div>
 
       <div class="buttons">
-        <button id="btnToggleQuote">Schimbă Mesaj</button>
+        <button id="btnToggleQuote">✨ Alt Mesaj</button>
       </div>
     </div>
   </div>
 
-  <!-- Butonul pentru a merge la index2.html -->
-  <a href="index2.html" class="next-button">
-    →
-  </a>
+  <a href="index.html" class="nav-btn nav-prev">←</a>
+
+  <a href="index2.html" class="nav-btn nav-next">→</a>
 
   <script>
     const start = new Date('2025-04-07T03:27:00');
-
     function update() {
       const now = new Date();
       let diff = Math.max(0, now - start);
-
-      const days = Math.floor(diff / (1000*60*60*24));
-      diff -= days * (1000*60*60*24);
-      const hours = Math.floor(diff / (1000*60*60));
-      diff -= hours * (1000*60*60);
-      const minutes = Math.floor(diff / (1000*60));
-      diff -= minutes * (1000*60);
+      const days = Math.floor(diff / (1000*60*60*24)); diff -= days * (1000*60*60*24);
+      const hours = Math.floor(diff / (1000*60*60)); diff -= hours * (1000*60*60);
+      const minutes = Math.floor(diff / (1000*60)); diff -= minutes * (1000*60);
       const seconds = Math.floor(diff / 1000);
-
       document.getElementById('days').textContent = days.toLocaleString();
       document.getElementById('hours').textContent = String(hours).padStart(2, '0');
       document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
       document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
     }
+    update(); setInterval(update, 1000);
 
-    update();
-    setInterval(update, 1000);
-
-    // Schimbă textul citatului
     const quotes = [
-      "De când două suflete s-au recunoscut,<br>și timpul a început să curgă altfel — o eternitate de iubire!",
-      "Two hearts, one soul. Me and you, babe.",
-      "Fiecare zi cu tine e ca o poveste de iubire scrisă doar pentru noi."
+      "De când două suflete s-au recunoscut,<br>timpul curge altfel — o eternitate de iubire!",
+      "Two hearts, one soul. Me and you, babe. ❤️",
+      "Fiecare zi cu tine e ca o poveste de iubire scrisă doar pentru noi.",
+      "All in. Always and Forever. Nu există cale de întoarcere, doar înainte împreună.",
+      "Fiecare secundă care trece mă aduce mai aproape de momentul când te strâng în brațe. ⏳❤️",
+      "Nu număr timpul cât am stat departe, ci cât mai am de așteptat până la 'acasă' la tine. 🏡",
+      "Tic-tac... inima mea bate în același ritm cu a ta, oriunde am fi. 💓",
+      "Ești singura mea constantă în toată trecerea asta a timpului. My Otter Half. 🦦",
+      "Timpul trece greu fără tine, dar știu că merită fiecare clipă de așteptare. Te iubesc! 🐼"
     ];
-    let quoteIndex = 0;
-    document.getElementById('btnToggleQuote').addEventListener('click', () => {
-      quoteIndex = (quoteIndex + 1) % quotes.length;
-      document.getElementById('quote').innerHTML = quotes[quoteIndex];
+
+    const quoteElement = document.getElementById('quote');
+    const btnQuote = document.getElementById('btnToggleQuote');
+
+    btnQuote.addEventListener('click', (e) => {
+      quoteElement.style.opacity = 0;
+      spawnHeart(e.clientX, e.clientY);
+      setTimeout(() => {
+        let randomQuote;
+        do { randomQuote = quotes[Math.floor(Math.random() * quotes.length)]; } while (randomQuote === quoteElement.innerHTML && quotes.length > 1);
+        quoteElement.innerHTML = randomQuote;
+        quoteElement.style.opacity = 1;
+      }, 500);
     });
 
-    // Activăm zona de swipe
-    document.getElementById('swipeArea').addEventListener('click', () => {
-      window.location.href = 'index2.html';
-    });
-
-    // Activăm efectul de swipe
-    document.getElementById('swipeArea').classList.add('active');
+    function spawnHeart(x, y) {
+        const heart = document.createElement('div');
+        heart.className = 'heart-float';
+        heart.innerHTML = '❤️';
+        heart.style.left = x + 'px';
+        heart.style.top = y + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1500);
+    }
   </script>
 </body>
 </html>
-
-

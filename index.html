@@ -17,40 +17,40 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      height: 100vh;
+      /* FIX PENTRU MOBIL: min-height în loc de height */
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       font-family: 'Inter', sans-serif;
       background-image: var(--bg-gradient);
+      /* FIX: Fundalul rămâne fix când dai scroll */
+      background-attachment: fixed;
+      background-size: cover;
       color: var(--text-color);
       text-align: center;
-      overflow: hidden;
+      overflow-x: hidden; /* Doar orizontal ascundem */
       padding: 20px;
       position: relative;
     }
 
     /* --- ANIMATII FIXATE --- */
-    
-    /* 1. Apariția Cardului */
     @keyframes cardEntrance {
       from { opacity: 0; transform: scale(0.8); }
       to { opacity: 1; transform: scale(1); }
     }
 
-    /* 2. Text și Butoane */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 3. Bounce Emoji - REPARAT (Acum rămâne vizibil) */
     @keyframes bounceIn {
       0% { opacity: 0; transform: scale(0.3); }
       50% { opacity: 1; transform: scale(1.1); }
       70% { opacity: 1; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); } /* Important: Opacity 1 la final */
+      100% { opacity: 1; transform: scale(1); }
     }
 
     /* --- STILURI --- */
@@ -71,37 +71,31 @@
       align-items: center;
       min-height: 420px;
       justify-content: space-between;
+      margin-top: auto; 
+      margin-bottom: auto;
 
-      /* Apare primul */
       opacity: 0;
       animation: cardEntrance 1s ease-out forwards;
     }
 
-    /* Emoji Header */
     .emoji-wrapper {
       font-size: 3.5rem;
       margin-bottom: 10px;
       display: block;
-      
-      /* Apare al doilea */
-      opacity: 0; /* Invizibil la start */
+      opacity: 0; 
       animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.8s forwards; 
     }
 
-    /* Titlul */
     h1 {
       font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
       margin-bottom: 10px;
       color: #fff;
       text-shadow: 0 2px 5px rgba(0,0,0,0.1);
-
-      /* Apare al treilea */
       opacity: 0;
       animation: fadeInUp 1s ease 1.5s forwards;
     }
 
-    /* Zona de Text */
     .message-area {
       flex-grow: 1;
       display: flex;
@@ -117,21 +111,16 @@
       font-weight: 500;
       color: #fff;
       text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-      
-      /* Apare al patrulea */
       opacity: 0;
       animation: fadeInUp 1s ease 2.5s forwards;
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
-    /* Container Butoane */
     .btn-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
-
-      /* Apare ultimul */
       opacity: 0;
       animation: fadeInUp 1s ease 3.5s forwards;
     }
@@ -197,74 +186,30 @@
 <body>
 
   <div class="welcome-card">
-    
-    <div class="emoji-wrapper">
-      <span id="headerEmoji">🏡</span>
-    </div>
-
+    <div class="emoji-wrapper"><span id="headerEmoji">🏡</span></div>
     <h1 id="headerTitle">Bun venit acasă!</h1>
-
     <div class="message-area">
       <p class="main-text" id="dynamicText">
         My Otter Half, aici e locul nostru. <br>
         Unde timpul stă pe loc și iubirea crește. 🦦❤️
       </p>
     </div>
-
     <div class="btn-wrapper">
-      <a href="index_1.html" class="action-btn">
-        Intră în Lumea Noastră ⏳
-      </a>
-      
-      <button class="shuffle-btn" onclick="nextMessage()" title="Alt gând...">
-        ✨
-      </button>
+      <a href="index_1.html" class="action-btn">Intră în Lumea Noastră ⏳</a>
+      <button class="shuffle-btn" onclick="nextMessage()" title="Alt gând...">✨</button>
     </div>
-
   </div>
 
   <script>
     const thoughts = [
-      {
-        emoji: "🏡",
-        title: "Bun venit acasă!",
-        text: "My Otter Half, aici e locul nostru. Unde timpul stă pe loc și iubirea crește. 🦦❤️"
-      },
-      {
-        emoji: "🍗",
-        title: "Planuri de viitor...",
-        text: "Știi la ce mă gândesc? La un Crispy bun la Buteni și la tine râzând lângă mine în mașină. Soon! 🚗"
-      },
-      {
-        emoji: "🐶",
-        title: "Ferma Noastră",
-        text: "O să avem cea mai faină mini-fermă. O pisică, un câine și noi doi, haos și iubire pură. 🐱"
-      },
-      {
-        emoji: "☕",
-        title: "Dimineți cu tine",
-        text: "Aștept momentul ăla: eu fac cafeaua, tu stai în pragul ușii, și totul e perfect. Doar noi doi. ☀️"
-      },
-      {
-        emoji: "🦦",
-        title: "My Baby Panda",
-        text: "Ești puiutu meu curajos. Când ți-e greu, amintește-ți că te țin de mână prin orice furtună. 🐼"
-      },
-      {
-        emoji: "💫",
-        title: "Just wondering...",
-        text: "Do you still love me, babe? Do you still want me? Because I choose you every single second."
-      },
-      {
-        emoji: "🌙",
-        title: "Mi-e dor...",
-        text: "Every moment without you feels like a quiet echo waiting for your warmth to fill it again."
-      },
-      {
-        emoji: "❤️",
-        title: "Te iubesc",
-        text: "Mai mult decât pot spune cuvintele. Ești sufletul meu pereche. Always."
-      }
+      { emoji: "🏡", title: "Bun venit acasă!", text: "My Otter Half, aici e locul nostru. Unde timpul stă pe loc și iubirea crește. 🦦❤️" },
+      { emoji: "🍗", title: "Planuri de viitor...", text: "Știi la ce mă gândesc? La un Crispy bun la Buteni și la tine râzând lângă mine în mașină. Soon! 🚗" },
+      { emoji: "🐶", title: "Ferma Noastră", text: "O să avem cea mai faină mini-fermă. O pisică, un câine și noi doi, haos și iubire pură. 🐱" },
+      { emoji: "☕", title: "Dimineți cu tine", text: "Aștept momentul ăla: eu fac cafeaua, tu stai în pragul ușii, și totul e perfect. Doar noi doi. ☀️" },
+      { emoji: "🦦", title: "My Baby Panda", text: "Ești puiutu meu curajos. Când ți-e greu, amintește-ți că te țin de mână prin orice furtună. 🐼" },
+      { emoji: "💫", title: "Just wondering...", text: "Do you still love me, babe? Do you still want me? Because I choose you every single second." },
+      { emoji: "🌙", title: "Mi-e dor...", text: "Every moment without you feels like a quiet echo waiting for your warmth to fill it again." },
+      { emoji: "❤️", title: "Te iubesc", text: "Mai mult decât pot spune cuvintele. Ești sufletul meu pereche. Always." }
     ];
 
     let currentIndex = 0;
@@ -273,28 +218,21 @@
     const emojiEl = document.getElementById('headerEmoji');
 
     function nextMessage() {
-      // Scoatem orice animație CSS rămasă pe text ca să nu interfereze
       textEl.style.animation = 'none';
-      
-      // Facem Fade Out
       textEl.style.opacity = 0;
       textEl.style.transform = "translateY(-10px)";
       
       setTimeout(() => {
         currentIndex = (currentIndex + 1) % thoughts.length;
         const nextThought = thoughts[currentIndex];
-
         titleEl.innerText = nextThought.title;
         emojiEl.innerText = nextThought.emoji;
         textEl.innerHTML = nextThought.text;
-
-        // Facem Fade In
         textEl.style.opacity = 1;
         textEl.style.transform = "translateY(0)";
       }, 400);
     }
 
-    // Fundal animat
     setInterval(() => {
       const heart = document.createElement('div');
       heart.className = 'bg-heart';
@@ -305,7 +243,6 @@
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 13000);
     }, 1000);
-
   </script>
 </body>
 </html>
