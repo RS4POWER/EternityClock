@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cupoane de Iubire 🎟️</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #fff0f5 0%, #ffe6ea 100%);
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    
+    h1 { 
+      color: #ff4f81; 
+      margin-bottom: 10px; 
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    p.subtitle {
+      color: #888;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+    
+    .coupon-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      max-width: 1100px;
+    }
+
+    .coupon {
+      background: white;
+      width: 280px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(255, 79, 129, 0.15);
+      transition: all 0.3s ease;
+      position: relative;
+      border: 2px solid transparent;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Bordură colorată în stânga */
+    .coupon::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 6px;
+      background: #ff4f81;
+    }
+
+    .coupon:hover { 
+      transform: translateY(-10px) rotate(1deg); 
+      box-shadow: 0 20px 40px rgba(255, 79, 129, 0.25);
+    }
+
+    .content { 
+      padding: 25px 20px; 
+      text-align: center; 
+      flex-grow: 1;
+    }
+    
+    .emoji { 
+      font-size: 45px; 
+      display: block; 
+      margin-bottom: 15px; 
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    }
+    
+    h2 { 
+      color: #333; 
+      font-size: 1.3em; 
+      margin: 10px 0; 
+      font-weight: 700;
+    }
+    
+    p { 
+      color: #666; 
+      font-size: 0.95em; 
+      line-height: 1.5; 
+    }
+
+    .redeem-btn {
+      width: 100%;
+      padding: 15px;
+      background: #ff4f81;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: background 0.3s;
+      margin-top: auto; /* Împinge butonul jos */
+    }
+    .redeem-btn:hover { background: #d6336c; }
+    .redeem-btn:active { transform: scale(0.98); }
+
+    .back-btn {
+        margin-top: 50px;
+        color: #ff4f81;
+        text-decoration: none;
+        font-weight: bold;
+        border: 2px solid #ff4f81;
+        padding: 12px 30px;
+        border-radius: 50px;
+        transition: all 0.3s;
+        background: white;
+    }
+    .back-btn:hover {
+      background: #ff4f81;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎟️ Vouchere pentru Panduța</h1>
+  <p class="subtitle">Valabile oricând, doar pentru tine. Screenshot și trimite-mi! 😉</p>
+
+  <div class="coupon-container">
+    
+    <div class="coupon">
+      <div class="content">
+        <span class="emoji">💆‍♀️</span>
+        <h2>Masaj Relaxant</h2>
+        <p>Un masaj complet la spate și umeri. Durată: Până adormi. Include uleiuri și liniște.</p>
+      </div>
+      <button class="redeem-btn" onclick="redeem('Pregătesc uleiul! Întoarce-te cu bouty bouty... 😘')">Folosește</button>
+    </div>
+
+    <div class="coupon">
+      <div class="content">
+        <span class="emoji">🍗</span>
+        <h2>Crispy la Buteni</h2>
+        <p>Mergem special pentru pofta ta. Eu conduc, eu fac cinste, tu doar savurezi crispy ăla bun.</p>
+      </div>
+      <button class="redeem-btn" onclick="redeem('Pornesc mașina! Direcția Buteni! 🚗💨')">Folosește</button>
+    </div>
+
+    <div class="coupon">
+      <div class="content">
+        <span class="emoji">🔥</span>
+        <h2>Spicy Night</h2>
+        <p>Tu doar te prezinți (preferabil în ciorapii aia...). De restul mă ocup eu. Detaliile sunt surpriză.</p>
+      </div>
+      <button class="redeem-btn" onclick="redeem('Uhh... u mine babe. 🔥')">Folosește</button>
+    </div>
+
+    <div class="coupon">
+      <div class="content">
+        <span class="emoji">🦦</span>
+        <h2>Otter Cuddles</h2>
+        <p>Sesiune de îmbrățișări non-stop. Ne ținem în brațe ca 2 otteri și uităm de lume.</p>
+      </div>
+      <button class="redeem-btn" onclick="redeem('Vin acum să te iau în brațe! 🫂')">Folosește</button>
+    </div>
+
+    <div class="coupon">
+      <div class="content">
+        <span class="emoji">👸</span>
+        <h2>Passenger Princess</h2>
+        <p>În următorul «Daily Trip»: Tu alegi muzica, tu alegi temperatura, eu sunt șoferul tău personal.</p>
+      </div>
+      <button class="redeem-btn" onclick="redeem('Yes, my Princess! Pune playlist-ul tău! 🎶 Grajdarul tau favorit e pe tura!')">Folosește</button>
+    </div>
+
+    <div class="coupon">
+      <div class="content">
+        <span class="emoji">🆘</span>
+        <h2>SOS: Dor de Tine</h2>
+        <p>Când distanța e grea: Facem video call IMEDIAT sau vin la tine (dacă se poate). Atenție maximă.</p>
+      </div>
+      <button class="redeem-btn" onclick="redeem('Sunt aici, iubire! Răspunde la telefon! 📞❤️')">Folosește</button>
+    </div>
+
+    <div class="coupon">
+      <div class="content">
+        <span class="emoji">🍕</span>
+        <h2>Orice Mâncare Vrei</h2>
+        <p>Eu iau, tu alegi. Fără "nu știu" sau "cum vrei tu". Pizza? Crispy? Tu decizi.</p>
+      </div>
+      <button class="redeem-btn" onclick="redeem('Yum! Trimite-mi locația sau meniul! 🍔')">Folosește</button>
+    </div>
+
+    <div class="coupon">
+      <div class="content">
+        <span class="emoji">🃏</span>
+        <h2>Joker Card</h2>
+        <p>Câștigi automat o dispută SAU îmi ceri orice lucru (cuminte sau nebun). Valabil o singură dată!</p>
+      </div>
+      <button class="redeem-btn" onclick="redeem('Am încurcat-o... dar fac orice pentru tine! 😈')">Folosește</button>
+    </div>
+
+  </div>
+
+  <a href="../index2.html" class="back-btn">↩ Înapoi la Meniu</a>
+
+  <script>
+    function redeem(msg) {
+      alert("✅ Voucher Activat!\n\nMesaj de la Bubu/Puiutu: " + msg + "\n\n(Fă un screenshot repede și trimite-mi-l!)");
+    }
+  </script>
+</body>
+</html>

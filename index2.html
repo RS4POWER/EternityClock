@@ -2,102 +2,100 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pentru Iubita Mea 💖</title>
     <style>
         body {
-            background-color: #fff5f8;
+            background: linear-gradient(135deg, #fff5f8 0%, #ffe0ec 100%);
             font-family: 'Segoe UI', sans-serif;
             text-align: center;
-            padding: 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
         }
         h1 {
             color: #ff4f81;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(255, 79, 129, 0.2);
+            margin-bottom: 40px;
         }
         .container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 50px;
-            margin-top: 50px;
+            gap: 30px;
+            max-width: 1000px;
+            padding: 20px;
         }
         .box {
-            background-color: #ffb6c1;
-            padding: 40px;
+            background-color: white;
+            padding: 30px;
+            width: 220px;
             border-radius: 20px;
-            box-shadow: 0 4px 20px #ffc0cb88;
+            box-shadow: 0 10px 25px rgba(255, 79, 129, 0.15);
             text-decoration: none;
-            color: white;
-            font-size: 24px;
+            color: #ff4f81;
+            font-size: 20px;
             font-weight: bold;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            border: 2px solid transparent;
         }
+        .box span { font-size: 40px; }
         .box:hover {
-            transform: scale(1.05);
-            background-color: #ff85a2;
+            transform: translateY(-10px);
+            background-color: #fff0f5;
+            border-color: #ffb6c1;
+            box-shadow: 0 15px 35px rgba(255, 79, 129, 0.25);
         }
-        /* Stilizare pentru butonul de back */
-    .back-button {
-    position: fixed;
-    top: 50%;
-    left: 0; /* Se va vedea direct pe ecran */
-    width: 70px;
-    height: 70px;
-    background: #ff4f81;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3s ease, left 0.3s ease;
-    z-index: 1000; /* Asigură-te că butonul este deasupra altor elemente */
-}
-
-      .back-button {
-    position: fixed;
-    top: 50%;
-    right: 20px; /* Butonul pe dreapta */
-    width: 50px;  /* Dimensiune mai mică */
-    height: 50px; /* Dimensiune mai mică */
-    background: rgba(255, 79, 129, 0.8); /* Culoare mai subtilă, transparentă */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    z-index: 1000;
-}
-
-.back-button::before {
-    content: "<";
-    font-size: 28px; /* Dimensiune mai mică */
-    color: #f7f8fa; /* Culoare mai subtilă, aproape albă */
-    opacity: 0;  /* Ascuns inițial */
-    transition: opacity 0.3s ease;
-    position: relative;  /* Adăugăm position: relative pentru a putea muta săgeata */
-    top: -2px; /* Ridicăm puțin săgeata față de centrul butonului */
-}
-
-.back-button:hover {
-    transform: scale(1.1);
-}
-
-.back-button:hover::before {
-    opacity: 1;  /* Face săgeata vizibilă la hover */
-}
-
-
+        
+        /* Buton Back */
+        .back-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 79, 129, 0.9);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            z-index: 1000;
+        }
+        .back-button:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
-    <h1>For my baby panda 💖</h1>
+    <h1>For my baby panda 🦦🐼</h1>
+    
     <div class="container">
-        <a class="box" href="html/mesaje.html">💌 Mesaje Drăgălașe</a>
-        <a class="box" href="html/gifuri.html">🐻 Galerie de GIF-uri</a>
-        <a class="box" href="html/surpriza.html">🎁 Surpriză!</a>
+        <a class="box" href="html/mesaje.html">
+            <span>💌</span> Mesaje de Dor
+        </a>
+        <a class="box" href="html/gifuri.html">
+            <span>🐻</span> Galerie Foto/GIF
+        </a>
+        <a class="box" href="html/vouchere.html">
+            <span>🎟️</span> Love Coupons
+        </a>
+        <a class="box" href="html/surpriza.html">
+            <span>🎁</span> Surpriza Ta
+        </a>
     </div>
 
-    <!-- Butonul de back -->
-    <div class="back-button" onclick="window.location.href='index_1.html';"></div>
+    <a href="index_1.html" class="back-button">↩</a>
 </body>
 </html>
-

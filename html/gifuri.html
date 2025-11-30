@@ -3,89 +3,117 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GIF Viewer</title>
+<title>Galeria Noastră 🐻</title>
 <style>
   body {
-    background-color: #ffe6f0;
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe6ea 100%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0; padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 20px;
+    text-align: center;
+    min-height: 100vh;
   }
 
-  h1 {
-    color: #cc0044;
+  h1 { 
+    color: #cc0044; 
+    margin-bottom: 10px; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  p { 
+    color: #888; 
+    margin-bottom: 30px; 
+    font-style: italic;
+  }
+
+  /* Grid Layout tip Pinterest */
+  .gallery {
+    column-count: 2; /* Pe telefon 2 coloane */
+    column-gap: 15px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 768px) {
+    .gallery { column-count: 3; } /* Pe laptop 3 coloane */
+    .gallery { column-gap: 20px; }
+  }
+
+  .gallery-item {
+    break-inside: avoid; /* Nu rupe imaginea între coloane */
     margin-bottom: 15px;
-    font-weight: 700;
-  }
-
-  #gif-container {
-    width: 350px;
-    height: 350px;
     border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(204, 0, 68, 0.3);
-    margin-bottom: 30px;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff0f6;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white; /* Fundal alb în caz că gif-ul e transparent */
   }
 
-  #gif-container img {
-    max-width: 100%;
-    max-height: 100%;
+  .gallery-item img {
+    width: 100%;
+    display: block;
     border-radius: 15px;
-    object-fit: contain;
   }
 
-  #buttons-container {
-    display: flex;
-    flex-wrap: wrap;
+  .gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(204, 0, 68, 0.2);
+    z-index: 10;
+    position: relative;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    gap: 12px;
-    max-width: 700px;
+    margin-top: 40px; 
+    margin-bottom: 40px;
+    padding: 12px 30px;
+    background: #cc0044; 
+    color: white; 
+    text-decoration: none;
+    border-radius: 50px; 
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(204, 0, 68, 0.3);
+    transition: all 0.3s;
   }
-
-  button {
-    background-color: #cc0044;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 10px 16px;
-    cursor: pointer;
-    font-weight: 600;
-    box-shadow: 0 4px 8px rgba(204, 0, 68, 0.4);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    white-space: nowrap;
-  }
-
-  button:hover {
-    background-color: #ff3366;
-    transform: scale(1.08);
-  }
-
-  button:focus {
-    outline: 2px solid #ff6699;
-    outline-offset: 2px;
+  
+  .back-btn:hover {
+      background: #ff3366;
+      transform: translateY(-3px);
   }
 </style>
 </head>
 <body>
 
-<h1>Choose a GIF to display</h1>
+<h1>🐻 Momentele Noastre</h1>
+<p>O colecție de îmbrățișări virtuale...</p>
 
-<div id="gif-container">
-  <img id="main-gif" src="../gifs/bear.gif" alt="Displayed GIF" />
-</div>
+<div class="gallery" id="gallery">
+  </div>
 
-<div id="buttons-container">
-  <!-- Buttons inserted by JS -->
-</div>
+<a href="../index2.html" class="back-btn">↩ Înapoi la Meniu</a>
 
 <script>
+  // LISTA ACTUALIZATĂ CU TOATE GIF-URILE (Vechi + Noi)
   const gifs = [
+    // --- Cele Noi Adăugate Acum ---
+    "dudu-bubu-cute-gif.gif",
+    "bubu-bubu-dudu.gif",
+    "sseeyal1l-bubu-dudu.gif",
+    "peachugomu-dudu-gif.gif",
+    "scuter bubu and dudu.gif",
+    "bubu-dudu-hold hands.gif",
+    "dudu-on-top-bubu-hearts.gif",
+    "bubu-dudu-cuddlel.gif",
+    "dudu-bubu.gif",
+    "tkthao219-bubududu.gif",
+    "bubu-dudu-sseeyall2.gif",
+    "dudu-bubu-cute-kiss.gif",
+    "kiss.gif",
+    "dudu-sleeping-bubu-awake.gif",
+    "bubu-dudu-sseeyall.gif",
+
+    // --- Cele Vechi ---
     "bear.gif",
     "bear-cuddle-bear-hug.gif",
     "bears-with-kisses-bg.gif",
@@ -122,18 +150,27 @@
     "tom-tom-and-jerry.gif"
   ];
 
-  const buttonsContainer = document.getElementById("buttons-container");
-  const mainGif = document.getElementById("main-gif");
+  const gallery = document.getElementById('gallery');
 
+  // Adăugăm imaginile în galerie
   gifs.forEach(gifName => {
-    const btn = document.createElement("button");
-    btn.textContent = gifName.replace(/-/g, " ").replace(".gif", "");
-    btn.title = gifName;
-    btn.addEventListener("click", () => {
-      mainGif.src = `../gifs/${gifName}`;
-      mainGif.alt = btn.textContent;
-    });
-    buttonsContainer.appendChild(btn);
+    const div = document.createElement('div');
+    div.className = 'gallery-item';
+    
+    const img = document.createElement('img');
+    // Important: "../gifs/" iese din folderul html și intră în gifs
+    img.src = `../gifs/${gifName}`; 
+    img.alt = "Love Gif";
+    img.loading = "lazy"; // Se încarcă doar când dai scroll (super pt telefon)
+
+    // Dacă imaginea nu se găsește, ascundem pătrățelul ca să nu arate urât
+    img.onerror = function() {
+        this.parentElement.style.display = 'none';
+        console.warn("Nu am găsit gif-ul: " + gifName);
+    };
+
+    div.appendChild(img);
+    gallery.appendChild(div);
   });
 </script>
 

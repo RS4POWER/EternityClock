@@ -1,93 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Love Messages 💌</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #fff0f5;
       margin: 0;
       padding: 20px;
+      padding-bottom: 100px; /* Loc pentru butonul back */
       text-align: center;
     }
 
     h1 {
       color: #d63384;
       margin-bottom: 30px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* Stil pentru Subtitluri (Categoriile) */
+    h3.category-title {
+      color: #ff4f81;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-size: 1.1em;
+      letter-spacing: 1px;
+      border-bottom: 2px dashed #ffb6c1;
+      display: inline-block;
+      padding-bottom: 5px;
     }
 
     #messageDisplay {
       background-color: #ffe6f0;
-      border: 2px solid #ff99cc;
+      border: 3px solid #ff99cc;
       border-radius: 15px;
-      padding: 20px;
-      font-size: 1.3em;
+      padding: 25px;
+      font-size: 1.4em;
+      line-height: 1.5;
       margin-bottom: 40px;
       color: #b30059;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
       min-height: 120px;
-      max-height: 400px;
-      overflow-y: auto;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       white-space: pre-line;
       transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .message-buttons {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 10px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     button {
       background-color: #ff4d88;
       color: white;
       border: none;
-      border-radius: 12px;
+      border-radius: 20px;
       padding: 12px 18px;
       font-size: 1em;
+      font-weight: 600;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     button:hover {
       background-color: #e6005c;
-      transform: scale(1.05);
+      transform: translateY(-3px);
     }
 
+    /* Butoane Speciale */
     .moon-button {
-      background: linear-gradient(90deg, #ffb3d9, #ffe6f0);
-      color: #b30059;
-      box-shadow: 0 0 10px #ffb3d9;
-      animation: glow 2s infinite ease-in-out;
-      font-weight: bold;
-      font-size: 1.1em;
+      background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+      box-shadow: 0 0 15px rgba(100, 100, 255, 0.5);
+    }
+    
+    .spicy-button {
+      background-color: #ff1a1a;
+    }
+    
+    /* Butoane NOI (Wave 1) */
+    .new-wave-btn {
+      background: linear-gradient(45deg, #ff85a2, #ff4d88);
+      border: 2px solid #fff;
     }
 
-    .moon-button:hover {
-      transform: translateY(4px) scale(1.05);
-      box-shadow: 0 0 25px #ff66b2;
+    /* Back Button Plutitor */
+    .back-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: white;
+        color: #ff4f81;
+        border: 2px solid #ff4f81;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        text-decoration: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: transform 0.3s;
+        z-index: 1000;
     }
+    .back-btn:hover { transform: scale(1.1); }
 
-    @keyframes glow {
-      0% { box-shadow: 0 0 8px #ff99cc; }
-      50% { box-shadow: 0 0 20px #ff66b2; }
-      100% { box-shadow: 0 0 8px #ff99cc; }
-    }
   </style>
 </head>
 <body>
+
   <h1>💌 Sweet Love Messages</h1>
 
   <div id="messageDisplay">Click a button below to read a message ❤️</div>
 
+  <h3 class="category-title">✨ Classics</h3>
   <div class="message-buttons">
-    <!-- Mesaje originale -->
     <button onclick="showMessage(0)">daily smile</button>
     <button onclick="showMessage(1)">every moment</button>
     <button onclick="showMessage(2)">speechless love</button>
@@ -98,8 +141,8 @@
     <button onclick="showMessage(7)">stronger together</button>
   </div>
 
+  <h3 class="category-title">💖 Sweet & Deep</h3>
   <div class="message-buttons">
-    <!-- Mesaje noi -->
     <button onclick="showMessage(8)">Bubuu & Panduța</button>
     <button onclick="showMessage(9)">Ferma noastră</button>
     <button onclick="showMessage(10)">Îmi e dor</button>
@@ -111,22 +154,18 @@
     <button onclick="showMessage(16)">Abia aștept</button>
   </div>
 
+  <h3 class="category-title">🌙 Moon & Stars</h3>
   <div class="message-buttons">
-    <!-- Mesaje cu luna -->
     <button onclick="showMessage(17)">Luna ne unește</button>
     <button onclick="showMessage(18)">Sub aceeași lună</button>
     <button onclick="showMessage(19)">Luna păstrează parfumul tău</button>
     <button onclick="showMessage(20)">Dacă mă uiți</button>
     <button onclick="showMessage(21)">Privește luna</button>
-  </div>
-
-  <div class="message-buttons">
-    <!-- Buton special semiluna -->
     <button class="moon-button" onclick="showMessage(22)">🌙 Pandantiv special</button>
   </div>
 
+  <h3 class="category-title">🔥 Spicy & Passion</h3>
   <div class="message-buttons">
-    <!-- Mesaje spicy -->
     <button onclick="showMessage(23)">Primul sărut</button>
     <button onclick="showMessage(24)">Sub pătură</button>
     <button onclick="showMessage(25)">Mă pierd în tine</button>
@@ -138,48 +177,78 @@
     <button onclick="showMessage(31)">Acasă e cu tine</button>
   </div>
 
-<!-- Secțiunea nouă pentru butoanele spicy -->
-<div class="message-buttons">
-  <button style="background-color:#ff1a1a;" onclick="showMessage(32)">Spicy</button>
-  <button style="background-color:#ff1a1a;" onclick="showMessage(33)">Spicy</button>
-  <button style="background-color:#ff1a1a;" onclick="showMessage(34)">Spicy</button>
-  <button style="background-color:#ff1a1a;" onclick="showMessage(35)">Spicy</button>
-</div>
+  <div class="message-buttons">
+    <button class="spicy-button" onclick="showMessage(32)">Biroul...</button>
+    <button class="spicy-button" onclick="showMessage(33)">Balconul...</button>
+    <button class="spicy-button" onclick="showMessage(34)">Fotoliul...</button>
+    <button class="spicy-button" onclick="showMessage(35)">Patul nostru...</button>
+  </div>
 
-  <!-- 💖 Love -->
-<div class="message-buttons">
-  <button onclick="showMessage(36)">Pure Love</button>
-  <button onclick="showMessage(37)">Silent Peace</button>
-  <button onclick="showMessage(38)">In Your Arms</button>
-  <button onclick="showMessage(39)">No Armor</button>
-  <button onclick="showMessage(40)">Love Is Patience</button>
-</div>
+  <h3 class="category-title">💞 Pure Love</h3>
+  <div class="message-buttons">
+    <button onclick="showMessage(36)">Pure Love</button>
+    <button onclick="showMessage(37)">Silent Peace</button>
+    <button onclick="showMessage(38)">In Your Arms</button>
+    <button onclick="showMessage(39)">No Armor</button>
+    <button onclick="showMessage(40)">Love Is Patience</button>
+  </div>
 
-<!-- 💫 Missing You -->
-<div class="message-buttons">
-  <button onclick="showMessage(41)">Heavy Absence</button>
-  <button onclick="showMessage(42)">Little Ways</button>
-  <button onclick="showMessage(43)">Hunger for You</button>
-  <button onclick="showMessage(44)">Even Our Fights</button>
-  <button onclick="showMessage(45)">Breathing in Longing</button>
-</div>
+  <h3 class="category-title">💫 Missing You</h3>
+  <div class="message-buttons">
+    <button onclick="showMessage(41)">Heavy Absence</button>
+    <button onclick="showMessage(42)">Little Ways</button>
+    <button onclick="showMessage(43)">Hunger for You</button>
+    <button onclick="showMessage(44)">Even Our Fights</button>
+    <button onclick="showMessage(45)">Breathing in Longing</button>
+  </div>
 
-<!-- 🌙 Our Future -->
-<div class="message-buttons">
-  <button onclick="showMessage(46)">No Perfection</button>
-  <button onclick="showMessage(47)">Years Ahead</button>
-  <button onclick="showMessage(48)">Grow Together</button>
-  <button onclick="showMessage(49)">Simple Life</button>
-  <button onclick="showMessage(50)">Hard or Easy</button>
-</div>
+  <h3 class="category-title">💍 Our Future</h3>
+  <div class="message-buttons">
+    <button onclick="showMessage(46)">No Perfection</button>
+    <button onclick="showMessage(47)">Years Ahead</button>
+    <button onclick="showMessage(48)">Grow Together</button>
+    <button onclick="showMessage(49)">Simple Life</button>
+    <button onclick="showMessage(50)">Hard or Easy</button>
+  </div>
 
-  
+  <h3 class="category-title">🏠 Cozy Moments (New)</h3>
+  <div class="message-buttons">
+    <button class="new-wave-btn" onclick="showMessage(51)">Mâncăm în pat 🍕</button>
+    <button class="new-wave-btn" onclick="showMessage(52)">Cafeaua în prag ☕</button>
+    <button class="new-wave-btn" onclick="showMessage(53)">Vin pe balcon 🍷</button>
+    <button class="new-wave-btn" onclick="showMessage(54)">Acasă ești tu 🏡</button>
+  </div>
 
-  
+  <h3 class="category-title">🗺️ Plans & Adventures (New)</h3>
+  <div class="message-buttons">
+    <button class="new-wave-btn" onclick="showMessage(55)">Crispy Buteni 🍗</button>
+    <button class="new-wave-btn" onclick="showMessage(56)">Mini Ferma 🐶🐱</button>
+    <button class="new-wave-btn" onclick="showMessage(57)">Daily Trip 🚗</button>
+    <button class="new-wave-btn" onclick="showMessage(58)">Totul ușor & fain ❤️</button>
+  </div>
+
+  <h3 class="category-title">🦦 My Otter Half (New)</h3>
+  <div class="message-buttons">
+    <button class="new-wave-btn" onclick="showMessage(59)">My Otter Half 🦦</button>
+    <button class="new-wave-btn" onclick="showMessage(60)">Panduța Somnoroasă 🐼</button>
+    <button class="new-wave-btn" onclick="showMessage(61)">Puiutu Curajos 💪</button>
+    <button class="new-wave-btn" onclick="showMessage(62)">My Soul Mate ✨</button>
+  </div>
+
+  <h3 class="category-title">❤️ Forever Us (New)</h3>
+  <div class="message-buttons">
+    <button class="new-wave-btn" onclick="showMessage(63)">Te aștept mereu 🚪</button>
+    <button class="new-wave-btn" onclick="showMessage(64)">Soarele meu ☀️</button>
+    <button class="new-wave-btn" onclick="showMessage(65)">All in. Always. ♾️</button>
+  </div>
+
+
+  <a href="../index2.html" class="back-btn">↩</a>
+
 
   <script>
     const messages = [
-      // Originale
+      // --- ORIGINALE (0-7) ---
       "You’re the reason I smile every day. 🩷",
       "Every moment with you is a gift. 🎁",
       "I love you more than words can say. 💖",
@@ -189,7 +258,7 @@
       "U are my baby panda! I love you!",
       "Even when we argue, even when we’re upset, I still love you. I don’t want to give up on us – I want us to grow stronger through every storm. 💞",
 
-      // Noi
+      // --- NOI OLD (8-16) ---
       "Bubuu, eu și cu Panduța noastră te așteptăm să vii, să ne dragalim și să o întoarcem invers să nu ne vadă când ne iubim tare tare și mult! 😍 U my entire world, babe! 💞",
       "Iubiree, imaginează-ți că deja avem primul animăluț pentru ferma noastră. Panduța abia așteaptă frățiori 😍🥰",
       "Îmi e atât de dor de tine, încât îți simt parfumul.",
@@ -200,14 +269,14 @@
       "Sufletul meu e incomplet până nu te simt lângă mine.",
       "Abia aștept să te țin aproape, să-ți simt pielea lângă pielea mea și să nu mai pleci.",
 
-      // Luna
+      // --- LUNA (17-21) ---
       "Când ne e dor, ne uităm la lună — ea păstrează amintirile noastre și ne ține de mână din depărtare. 🌙",
       "Sub aceeași lună suntem, chiar dacă-s kilometri între noi. Ea ne știe taina — suntem împreună acolo.",
       "Luna ne veghează somnul și păstrează parfumul tău în lumina ei. Seara mea e doar a ta.",
       "Dacă-ti lipsesc, priveste lună — o să-ți trimit un sărut prin razele ei.",
       "Când îmi e dor îți spun «privește luna»; e felul meu de a-ți spune «sunt aici».",
 
-      // Pandantiv special
+      // --- PANDANTIV (22) ---
       `Babe, când ți-e dor de mine, când ești tristă sau fericită sau simți nevoia să mă simți aproape,
 nu uita că porți la gât un pandantiv special.
 Semiluna aceasta e martorul nostru tăcut, puntea dintre inimile noastre când distanța apasă.
@@ -222,7 +291,7 @@ Te iubesc. All in. Always and forever.
 Dacă nu sunt lângă tine acum, înseamnă că voi fi repede-repede!
 Te iubesc și te voi iubi mereu! ❤️🌙`,
 
-      // Spicy
+      // --- SPICY OLD (23-31) ---
       "Îmi amintesc când te-am sărutat prima dată — inima mea a început să ardă și n-a mai încetat.",
       "Noi doi, sub pătură, lumină stinsă — te vreau aproape, acum.",
       "Mă pierd în tine: atingerea ta îmi spune povești pe care doar trupurile noastre le știu.",
@@ -232,44 +301,79 @@ Te iubesc și te voi iubi mereu! ❤️🌙`,
       "Când îmi spui «te iubesc», lumea îmi pare de-ajuns.",
       "Iubirea mea pentru tine nu e o furtună: e oceanul care rămâne mereu acolo.",
       "Cu tine am învățat ce înseamnă «acasă».",
-"Iți amintești când am stat peste program? Te ai aplecat peste birou, ti am ridicat rochia, si am curs din tine câteva ore ❤️🤗. Love it! " ,
-"Știi, balconul meu tânjește după de când ne-a văzut iubindu-ne si gemând sub razele lunii…" ,
- "Babe, fotoliul meu plânge după prezenta ta, camera e sumbra si sufletul meu incomplet fără tine." , 
- "Bubu mea, abia aștept sa ne punem in patul nostru, sa ardem împreuna, sa ne simțim căldura unul altuia, atingerea si sărutul, iar apoi sa adormi pe brațul meu." ,
-// 💖 Love
-"Te iubesc într-un fel care nu are nevoie de dovezi, dar totuși îți caut chipul în fiecare gest mic pe care-l fac.",
-"Nu trebuie să spui nimic — uneori doar prezența ta liniștește tot haosul din mine.",
-"Când te țin în brațe, simt că tot ce a fost greu în viață are un rost. Pentru că duce aici — la tine.",
-"Tu nu ești doar iubita mea. Ești locul unde pot fi eu fără armură.",
-"Mă înveți zilnic că dragostea nu e doar pasiune — e răbdare, ascultare și curajul de a rămâne chiar și când doare.",
-// 💫 Missing You
-"E ciudat cum lipsa ta ma apasa, cum simt fizic golul unde ar trebui să fii tu.",
-"Mi-e dor de tine si în feluri mici — în tăceri, în cafeaua rece, în momentele în care aproape îți aud vocea.",
-"Imi e mai mult decat dor, e o sete de tine. De privirea ta, de atingerea ta, de iubirea ta, de prezenta ta, de NOI",
-"Mi-e dor... dor de mine si tine...",
-"Uneori, dorul ăsta parcă respiră în locul meu. Îl simt în fiecare clipă în care nu te am.",
-// 🌙 Our Future
-"Nu vreau perfecțiune, vreau doar un „noi” care nu renunță in fata oricarei furtuni.",
-"Mă văd cu tine peste ani, certându-ne cine spală vasele și râzând fix după.",
-"Vreau să fim genul de indragostiti care cresc împreună, nu care se sting în tăcere.",
-"Vreau o viață cu tine, dar reală — cu dimineți lente, planuri tâmpite și dragoste adevărată.",
-"Dacă e să fie greu, să fie greu cu tine. Dacă e să fie bine, să fie și mai bine tot cu tine."
 
+      // --- SPICY NEWER (32-35) ---
+      "Iți amintești când am stat peste program? Te ai aplecat peste birou, ti am ridicat rochia, si am curs din tine câteva ore ❤️🤗. Love it! " ,
+      "Știi, balconul meu tânjește după noi, de când ne-a văzut iubindu-ne si gemând sub razele lunii…",
+      "Babe, fotoliul meu plânge după prezenta ta, camera e sumbra si sufletul meu incomplet fără tine." , 
+      "Bubu mea, abia aștept sa ne punem in patul nostru, sa ardem împreuna, sa ne simțim căldura unul altuia, atingerea si sărutul, iar apoi sa adormi pe brațul meu.",
+
+      // --- PURE LOVE (36-40) ---
+      "Te iubesc într-un fel care nu are nevoie de dovezi, dar totuși îți caut chipul în fiecare gest mic pe care-l fac.",
+      "Nu trebuie să spui nimic — uneori doar prezența ta liniștește tot haosul din mine.",
+      "Când te țin în brațe, simt că tot ce a fost greu în viață are un rost. Pentru că duce aici — la tine.",
+      "Tu nu ești doar iubita mea. Ești locul unde pot fi eu fără armură.",
+      "Mă înveți zilnic că dragostea nu e doar pasiune — e răbdare, ascultare și curajul de a rămâne chiar și când doare.",
+
+      // --- MISSING YOU (41-45) ---
+      "E ciudat cum lipsa ta ma apasa, cum simt fizic golul unde ar trebui să fii tu.",
+      "Mi-e dor de tine si în feluri mici — în tăceri, în cafeaua rece, în momentele în care aproape îți aud vocea.",
+      "Imi e mai mult decat dor, e o sete de tine. De privirea ta, de atingerea ta, de iubirea ta, de prezenta ta, de NOI",
+      "Mi-e dor... dor de mine si tine...",
+      "Uneori, dorul ăsta parcă respiră în locul meu. Îl simt în fiecare clipă în care nu te am.",
+
+      // --- OUR FUTURE (46-50) ---
+      "Nu vreau perfecțiune, vreau doar un „noi” care nu renunță in fata oricarei furtuni.",
+      "Mă văd cu tine peste ani, certându-ne cine spală vasele și râzând fix după.",
+      "Vreau să fim genul de indragostiti care cresc împreună, nu care se sting în tăcere.",
+      "Vreau o viață cu tine, dar reală — cu dimineți lente, planuri tâmpite și dragoste adevărată.",
+      "Dacă e să fie greu, să fie greu cu tine. Dacă e să fie bine, să fie și mai bine tot cu tine.",
+
+      // =======================================================
+      //  MESAJE NOI - WAVE 1 (51-65) - ROMÂNĂ
+      // =======================================================
       
+      // 🏠 COZY MOMENTS (51-54)
+      "Printre cele mai dulci momente sunt când papăm amândoi în pat, cozy, cu un film pe fundal. Doar noi, îmbrățișați și iubindu-ne. Asta e fericirea mea. 🍕📺",
+      "Ador când stai în pragul ușii și mă privești cum îți fac cafeaua. Ești cea mai frumoasă priveliște babe. ☕❤️",
+      "Și serile cu vin pe balcon... când timpul stă pe loc, ne sărutăm și ne iubim sub stele. Abia aștept să repetăm. 🍷✨",
+      "Când suntem împreună, oriunde ar fi, devine «acasă». Dar cel mai mult îmi place când acasă ești doar TU. 🏡",
 
+      // 🗺️ PLANS & ADVENTURES (55-58)
+      "Puișu meu, am o datorie la tine: Crispy-ul ăla legendar de la Buteni! 🍗 Pregătește-te, că te răsfăț maxim!",
+      "Vreau să ne facem mini ferma noastră! 1,2,3 pisici, 1,2,3 caini și noi doi în mijlocul haosului perfect. ❤️🐶🐱",
+      "Orice «daily trip» cu tine e o aventură, chiar dacă mergem doar cu mașina și ascultăm muzică. Mâna mea pe piciorul tău = liniște si pace. 🚗",
+      "Abia aștept să fim doar noi doi, să fie totul ușor, normal și bine. Doar noi. Soon, babe! <3",
+
+      // 🦦 MY OTTER HALF (59-62)
+      "Ești my otter half. Așa cum ele se țin de mână în somn să nu se piardă, așa te țin eu de suflet. Mereu. 🦦",
+      "Panduța mea somnoroasă, vreau să adorm și să mă trezesc cu tine în fiecare zi. Ești totul pentru mine. 🐼",
+      "Puiutu meu, știu că e greuț acum distanța, dar gândește-te că ne construim viitorul. Merită fiecare secundă de așteptare. Ești puternica si curajoasă! 💪",
+      "Tu ești «my soul mate». Nu e doar iubire, e o legătură pe care nimic nu o poate rupe. ✨",
+
+      // ❤️ FOREVER US (63-65)
+      "Te aștept mereu. Când vii la mine, casa se umple de lumină și sufletul meu e din nou întreg. 🚪❤️",
+      "Ești soarele meu. Chiar și când e înnorat afară sau avem zile grele, tu strălucești pentru mine. ☀️",
+      "All in. Always. Suntem noi doi împotriva lumii și o să fie bine! Te iubesc infinit! ♾️"
     ];
 
     function showMessage(index) {
-  const display = document.getElementById("messageDisplay");
-  display.style.opacity = 0; // fade out
-  setTimeout(() => {
-    display.innerHTML = messages[index]; // folosește innerHTML în loc de textContent
-    display.style.opacity = 1; // fade in
-  }, 200);
-}
+      const display = document.getElementById("messageDisplay");
+      
+      // 1. Fade Out
+      display.style.opacity = 0; 
+      
+      setTimeout(() => {
+        // 2. Schimbă textul
+        display.innerHTML = messages[index]; 
+        
+        // 3. Fade In
+        display.style.opacity = 1; 
 
+        // 4. Scroll Automat
+        display.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 200);
+    }
   </script>
 </body>
 </html>
-
-
